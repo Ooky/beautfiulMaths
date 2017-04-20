@@ -1,0 +1,23 @@
+void setup() {
+ size(800, 800);
+ background(0);
+ drawCircle(10,10,10);
+  
+  
+}
+
+
+void drawCircle(int radius, int posX, int posY) {
+  int pointUp = posY+radius; 
+  int pointDown = posY-radius;
+  int pointLeft;
+  int pointRight;
+  
+  
+  
+  stroke(255,255,255);
+  point(100, 100);
+  translate(30,30);
+  point(100,100);
+  
+}
