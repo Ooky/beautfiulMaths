@@ -1,0 +1,9 @@
+void setup() {
+  background(0);
+  size(800, 800, P3D);
+}
+
+
+void drawSphere() {
+  sphere(400, 400);
+}
