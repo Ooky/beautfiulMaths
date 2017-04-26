@@ -1,0 +1,47 @@
+float e = (float) Math.E;
+void setup() {
+  background(0);
+  size(800, 800, P3D);
+  frame.setLocation(displayWidth/2-width/2,displayHeight/2-height/2);
+  stroke(255);
+  //drawShell(400, 50,20 );
+  //drawSpirale(5, 400, 400);
+  goldenRatio(400,400);
+}
+
+void drawShell(int middlePoint, int radius, int shellHeight) {
+
+  for(int i = 0; i<360; i++) {
+    
+    
+  }
+}
+
+void drawSpirale(float radius, int posX, int posY) {
+  //MiddlePoint
+  point(posX, posY);
+  for (float f = 0; f<720*2; f+=0.25) {//f<360; f+=1  //f<720; f+=0.5
+    point(posX+cos(f)*radius, posY+sin(f)*radius);
+    radius+=0.1;
+  }
+}
+void goldenRatio(float posX, int posY) {
+  //MiddlePoint
+  point(posX, posY);
+  //Ratio
+  float a = 0.6180;
+  float b = 0.382;
+
+  float lastX=posX+a*pow(e, b*0)*cos(0);
+  float lastY=posY+a*pow(e, b*0)*sin(0);
+
+  for (float f = 0; f<720; f+=0.01) {//f<360; f+=1  //f<720; f+=0.5
+    line(lastX, lastY, posX+a*pow(e, b*f)*cos(f), posY+a*pow(e, b*f)*sin(f));
+    lastX=posX+a*pow(e, b*f)*cos(f);
+    lastY=posY+a*pow(e, b*f)*sin(f);
+    //radius+=0.5;
+  }
+}
+
+void draw() {
+}
