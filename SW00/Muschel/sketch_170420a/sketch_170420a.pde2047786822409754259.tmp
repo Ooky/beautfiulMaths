@@ -10,8 +10,8 @@ void setup() {
   //drawShellWithFormulaTry3(400,400);
   //drawShellWithFormulaTry4(400, 400);
   //drawShellWithFormulaTry5();
-  //booleanDrawShellWithFormulaTry5Animated=true;
-  drawShellWithFormulaTry6();
+  booleanDrawShellWithFormulaTry5Animated=true;
+  //drawShellWithFormulaTry6();
   //drawSpirale(5, 400, 400);
   //goldenRatio(400, 400);
   //somethingOther(400,400);
