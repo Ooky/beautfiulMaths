@@ -1,32 +1,35 @@
 //init array for random values
-float[][] randomValues;
+float[][] noise;
 
 void setup() {
   size(800, 800);
-  randomValues = new float[width][height];
+  noise = new float[width][height];
   fillNoiseArrayWithRandomValues(width, height);
-  float[][] colorValue = GenerateSmoothNoise(randomValues, 10);
+  float[][] test = GenerateSmoothNoise(noise, 10);
   for (int y = 0; y < width; y++) {
     for (int x = 0; x <height; x++) {
-      stroke(colorValue[x][y]);
+      //ColorValue
+      stroke(test[x][y]);
       point(x, y);
     }
   }
 }
 public float[][] GenerateSmoothNoise(float[][] baseNoise, int octave) {
-
+  
   float[][] smoothNoise = new float[width][height];
 
   int samplePeriod = 50; // calculates 2 ^ k ==>  2^octave
-  float sampleFrequency = (1.0f / samplePeriod);
+  float sampleFrequency = 1.0f / samplePeriod;
 
-  for (int i = 0; i < width; i++) {
+  for (int i = 0; i < width; i++)
+  {
     //calculate the horizontal sampling indices
     int sample_i0 = (i / samplePeriod) * samplePeriod;
     int sample_i1 = (sample_i0 + samplePeriod) % width; //wrap around
     float horizontal_blend = (i - sample_i0) * sampleFrequency;
 
-    for (int j = 0; j < height; j++) {
+    for (int j = 0; j < height; j++)
+    {
       //calculate the vertical sampling indices
       int sample_j0 = (j / samplePeriod) * samplePeriod;
       int sample_j1 = (sample_j0 + samplePeriod) % height; //wrap around
@@ -47,10 +50,12 @@ public float[][] GenerateSmoothNoise(float[][] baseNoise, int octave) {
 
   return smoothNoise;
 }
-public float Interpolate(float x0, float x1, float alpha) {
+float Interpolate(float x0, float x1, float alpha)
+{
   return x0 * (1 - alpha) + alpha * x1;
 }
-public float[][] GeneratePerlinNoise(float[][] baseNoise, int octaveCount) {
+float[][] GeneratePerlinNoise(float[][] baseNoise, int octaveCount)
+{
   int width = baseNoise.length;
   int height = baseNoise[0].length;
 
@@ -59,7 +64,8 @@ public float[][] GeneratePerlinNoise(float[][] baseNoise, int octaveCount) {
   float persistance = 0.5f;
 
   //generate smooth noise
-  for (int i = 0; i < octaveCount; i++) {
+  for (int i = 0; i < octaveCount; i++)
+  {
     smoothNoise[i] = GenerateSmoothNoise(baseNoise, i);
   }
 
@@ -68,20 +74,25 @@ public float[][] GeneratePerlinNoise(float[][] baseNoise, int octaveCount) {
   float totalAmplitude = 0.0f;
 
   //blend noise together
-  for (int octave = octaveCount - 1; octave >= 0; octave--) {
+  for (int octave = octaveCount - 1; octave >= 0; octave--)
+  {
     amplitude *= persistance;
     totalAmplitude += amplitude;
 
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
+    for (int i = 0; i < width; i++)
+    {
+      for (int j = 0; j < height; j++)
+      {
         perlinNoise[i][j] += smoothNoise[octave][i][j] * amplitude;
       }
     }
   }
 
   //normalisation
-  for (int i = 0; i < width; i++) {
-    for (int j = 0; j < height; j++) {
+  for (int i = 0; i < width; i++)
+  {
+    for (int j = 0; j < height; j++)
+    {
       perlinNoise[i][j] /= totalAmplitude;
     }
   }
@@ -89,13 +100,13 @@ public float[][] GeneratePerlinNoise(float[][] baseNoise, int octaveCount) {
   return perlinNoise;
 }
 
-public float[][] fillNoiseArrayWithRandomValues(int width, int height) {
+float[][] fillNoiseArrayWithRandomValues(int width, int height) {
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
-      randomValues[i][j] = random(255);
+      noise[i][j] = random(255);
     }
   }
-  return randomValues;
+  return noise;
 }
 void draw() {
 }

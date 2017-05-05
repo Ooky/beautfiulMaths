@@ -1,42 +1,43 @@
-//Credits: https://www.youtube.com/watch?v=IKB1hWWedMk
-
+//Michi made the sound thing
+import processing.sound.*;
+Amplitude amp;    // volume analyzer
+AudioIn in;
+float scale=15;
+float smooth_factor=0.1;
+float sum;
 int cols, rows;
 int scl = 20;
 int w = 2400;
 int h = 1600;
-
 float flying = 0;
-
 float[][] terrain;
-
-void setup() {
-  size(600, 600, P3D);
+void setup() {  
+  amp = new Amplitude(this);
+  in = new AudioIn(this, 0);
+  in.start();
+  amp.input(in);  
+  size(1920, 1080, P3D);
   cols = w / scl;
   rows = h/ scl;
   terrain = new float[cols][rows];
 }
-
-
 void draw() {
 
-  flying -= 0.1;
-
+  sum += (amp.analyze() - sum) * smooth_factor;
+  float amp_scaled=sum*(height/100)*scale;  
+  flying -= 0.1;  
   float yoff = flying;
   for (int y = 0; y < rows; y++) {
     float xoff = 0;
     for (int x = 0; x < cols; x++) {
-      terrain[x][y] = map(noise(xoff, yoff), 0, 1, -30, 30);
+      terrain[x][y] = map(noise(xoff, yoff), 0, 1, -30*amp_scaled, 30*amp_scaled);
       xoff += 0.2;
     }
     yoff += 0.2;
-  }
-
-
-
+  }  
   background(0);
   stroke(255);
-  noFill();
-
+  noFill();  
   translate(width/2, height/2+50);
   rotateX(PI/3);
   translate(-w/2, -h/2);
