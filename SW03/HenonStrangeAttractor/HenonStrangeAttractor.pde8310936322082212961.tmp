@@ -1,0 +1,48 @@
+//H: (x, y) -> (y, 1-ay^2+bx)
+
+int startX;
+int startY;
+final int rectWidth = 50;
+final int rectHeight= 50;
+float a= 1.4;
+float b = 0.3;
+color colorRed;
+int red = -65536;
+int black = -16777216;
+
+
+
+void setup() {
+  size(800, 800);
+  background(0);
+  noStroke();
+  startX= (width/2) - (rectWidth/2);
+  startY= (width/2) - (rectHeight/2);
+  draw50x50Points();
+  
+  
+}
+
+
+private void draw50x50Points() {
+  fill(255, 0, 0);
+  //Square in Middle of Screen
+  rect(startX, startY, rectWidth, rectHeight);
+  loadPixels();
+  for (int i =0; i<(width*height)-1; i++) {
+    println(get(pixels[i]));
+  }
+}
+
+
+void draw() {
+}
+
+/*  for(int i = 0; i <50; i++) {
+ for(int j = 0; j <50; j++) { 
+ 
+ point(j+100, 1-a*j*j+b*i+100);
+ 
+ }
+ }
+ */
