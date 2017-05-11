@@ -3,7 +3,7 @@ float r = 1f;
 int arrSize = 200;
 float startX;
 float startY;
-float stretchFactorX = 100;
+float stretchFactorX = 200;
 float stretchFactorY = 200;
 float maxNumberInArray;
 float[] numbers = new float[arrSize];
@@ -23,11 +23,10 @@ void setup() {
 private void printLinesFromValues() {
   startX= 1*width/10;
   startY= height/2;
-  for (float j = 1; j <=4; j+=0.1) {
+  for (float j = 1; j <=4; j+=0.01) {
     initializeHausdorffArray(p, j);
-    for (int i = 100; i < numbers.length-1; i++) { //ignore first 100
-      point((j)*stretchFactorX+startX, numbers[i-1]*stretchFactorY+startY);
-      //line((i-1)*stretchFactorX+startX, numbers[i-1]*stretchFactorY+startY, i*stretchFactorX+startX, numbers[i]*stretchFactorY+startY);
+    for (int i = 100; i < numbers.length; i++) { //ignore first 100
+      point(startX+(j)*stretchFactorX, startY+numbers[i-1]*stretchFactorY);
     }
   }
 }
