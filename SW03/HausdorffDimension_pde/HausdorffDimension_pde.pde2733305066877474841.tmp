@@ -3,8 +3,8 @@ float r = 1f;
 int arrSize = 200;
 float startX;
 float startY;
-float stretchFactorX = 100;
-float stretchFactorY = 200;
+float stretchFactorX = 20;
+float stretchFactorY = 160;
 float maxNumberInArray;
 float[] numbers = new float[arrSize];
 
