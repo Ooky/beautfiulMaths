@@ -1,37 +1,26 @@
-import peasy.*;
-
-
 float p = 0.1f;
 float r = 1f;
 int arrSize = 200;
 float startX;
 float startY;
-float stretchFactorX = 400;
-float stretchFactorY = 400;
+float stretchFactorX = 200;
+float stretchFactorY = 200;
 float maxNumberInArray;
 float[] numbers = new float[arrSize];
-PeasyCam cam;
 
 
 void setup() {
   //Init default things
-  size(800, 800, P3D);
-  cam = new PeasyCam(this, -200);
+  size(800, 800);
   background(0);
   stroke(255);
-  strokeWeight(2);
-  startX= -600;
-  //startX= width/10;
+  startX= width/10;
   startY= height/4;
-  //initializeHausdorffArray(p, r);
+  initializeHausdorffArray(p, r);
   //printHausdorffArrayValues();
-  
-}
-
-void draw()  {
-  background(0);
   printLinesFromValues();
 }
+
 
 private void printLinesFromValues() {
   for (float r = 1; r <=4; r+=0.01) {
