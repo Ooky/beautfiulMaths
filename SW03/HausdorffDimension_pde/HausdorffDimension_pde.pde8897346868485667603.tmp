@@ -1,0 +1,15 @@
+float p = 0.01f;
+float r = 1.5f;
+float[] numbers = new float[100];
+
+
+void setup() {
+  //First Value
+  numbers[0] = p+(r*p)*(1-p);
+  for(int i = 1; i < numbers.length-1; i++) {
+     numbers[i] =  numbers[i-1]+(r*numbers[i-1])*(1-numbers[i-1]);
+  } 
+  for(float values : numbers) {
+   println(values);   
+  }  
+}
