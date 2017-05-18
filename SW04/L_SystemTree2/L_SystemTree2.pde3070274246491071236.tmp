@@ -1,0 +1,53 @@
+ArrayList<Character> listPreviousChar = new ArrayList<Character>();
+HashMap<Character, String> mapRules = new HashMap<Character, String>();
+ArrayList<Character> listNextChar = new ArrayList<Character>();
+
+
+
+
+
+int count = 0;
+String current = "A";
+
+void setup() {
+  //Define HashMap
+  mapRules.put('A', "AB");
+  mapRules.put('B', "A");
+  //Prepare first letter
+  listPreviousChar.add('A');
+  println("Generation " + count + ": " + listPreviousChar.get(0));
+}
+
+void draw() {
+}
+
+void mousePressed() {
+  listNextChar.clear();
+  println("hahuhuh"+mapRules.get(listPreviousChar.get(0)));
+  for (int i = 0; i <listPreviousChar.size(); i++) {
+    for(int j = 0; j <mapRules.get(listPreviousChar.get(i)); i++) {
+
+      
+    }
+    
+    
+    
+    
+   // if(mapRules.containsKey(listPreviousChar.get(i))) {
+   //   for(int i = 0; i <mapRules.get(listPreviousChar.get(i)))
+   //  println("huhuhuh"); 
+    }
+    
+    
+ 
+
+
+  for (int i = 0; i<listPreviousChar.size(); i++) {
+    print(listPreviousChar.get(i));
+  }
+  //Copy listNext-Values to listPrevious-Values
+  listPreviousChar.clear();
+  for(Character c : listNextChar) {
+    listPreviousChar.add(c);
+  }
+}

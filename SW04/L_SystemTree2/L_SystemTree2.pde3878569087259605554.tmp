@@ -4,13 +4,18 @@ ArrayList<Character> listNextChar = new ArrayList<Character>();
 
 
 
+
+
+int count = 0;
+String current = "A";
+
 void setup() {
   //Define HashMap
-  mapRules.put('A', "ABA");
-  mapRules.put('B', "BBB");
+  mapRules.put('A', "AB");
+  mapRules.put('B', "A");
   //Prepare first letter
   listPreviousChar.add('A');
-  println(listPreviousChar.get(0));
+  println("Generation " + count + ": " + listPreviousChar.get(0));
 }
 
 void draw() {
@@ -19,19 +24,18 @@ void draw() {
 void mousePressed() {
   listNextChar.clear();
   for (int i = 0; i <listPreviousChar.size(); i++) {
-    for (int j = 0; j < mapRules.get(listPreviousChar.get(i)).length(); j++) {
-      listNextChar.add(mapRules.get(listPreviousChar.get(i)).charAt(j));
+    if(mapRules.containsKey(listPreviousChar.get(i))) {
+      for(int i = 0; i <mapRules.get(listPreviousChar.get(i)))
+     println("huhuhuh"); 
     }
   }
-  for (int i = 0; i<listNextChar.size(); i++) {
-    print(listNextChar.get(i));
+
+  for (int i = 0; i<listPreviousChar.size(); i++) {
+    print(listPreviousChar.get(i));
   }
-  println("");
-
-
   //Copy listNext-Values to listPrevious-Values
   listPreviousChar.clear();
-  for (Character c : listNextChar) {
+  for(Character c : listNextChar) {
     listPreviousChar.add(c);
   }
 }
