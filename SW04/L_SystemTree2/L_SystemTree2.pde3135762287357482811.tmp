@@ -1,4 +1,4 @@
-ArrayList<Character> listPreviousChar = new ArrayList<Character>(); //<>//
+ArrayList<Character> listPreviousChar = new ArrayList<Character>();
 HashMap<Character, String> mapRules = new HashMap<Character, String>();
 ArrayList<Character> listNextChar = new ArrayList<Character>();
 

@@ -1,4 +1,4 @@
-ArrayList<Character> listPreviousChar = new ArrayList<Character>(); //<>//
+ArrayList<Character> listPreviousChar = new ArrayList<Character>();
 HashMap<Character, String> mapRules = new HashMap<Character, String>();
 ArrayList<Character> listNextChar = new ArrayList<Character>();
 
@@ -6,7 +6,7 @@ int lineLength = 100;
 float theta;
 
 void setup() {
-  size(800, 800); 
+  size(800, 800);
   background(0);
   stroke(255);
   theta = radians(45);
@@ -22,7 +22,7 @@ void setup() {
 void draw() {
 }
 
-void lSystem(boolean printChars) {
+void lSystem() {
   listNextChar.clear();
   //for every character in my list
   for (int i = 0; i <listPreviousChar.size(); i++) {
@@ -34,10 +34,14 @@ void lSystem(boolean printChars) {
         //add the char to the list
         listNextChar.add(currentString.charAt(j));
       }
-    } else {
-      listNextChar.add(listPreviousChar.get(i));
     }
   }
+  //print listNext
+  for (int i = 0; i<listNextChar.size(); i++) {
+    print(listNextChar.get(i));
+  }
+  println("");
+
   //Draw something to listNextChar
   for (int i = 0; i< listNextChar.size(); i++) {
     if (listNextChar.get(i).equals('F')) {
@@ -59,21 +63,9 @@ void lSystem(boolean printChars) {
   for (Character c : listNextChar) {
     listPreviousChar.add(c);
   }
-
-  if (printChars) {
-    //print listNext
-    for (int i = 0; i<listNextChar.size(); i++) {
-      print(listNextChar.get(i));
-    }
-    println("");
-  }
 }
 
 
 
 void mousePressed() {
-  translate(width/2, height);
-  rotate(-PI/2);
-  lineLength *=0.6;
-  lSystem(true);
 }
