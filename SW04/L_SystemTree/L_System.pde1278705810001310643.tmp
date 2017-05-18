@@ -8,13 +8,14 @@ void setup() {
 void draw() {
   background(0);
   stroke(255);
-  theta = map(mouseX, 0, width, 0, PI/2);
+  theta = map(mouseX, 0, width, 0, radians(45));
   translate(width/2, height);
-  branch(100);
+  branch(300);
 }
 
 
 void branch(float len) {
+  //stroke(len*10);
   line(0, 0, 0, -len);
   translate(0, -len);
 
