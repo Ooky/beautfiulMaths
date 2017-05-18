@@ -12,9 +12,25 @@ void setup() {
   theta = radians(45);
   //Prepare first letter
   listPreviousChar.add('F');
-  //Define HashMap
-  mapRules.put('F', "FF+[+F-F-F]-[-F+F+F]");
-  //mapRules.put('B', "BBB");
+  //Define HashMap + angle
+  //mapRules.put('F', "FF+[+F-F-F]-[-F+F+F]");
+  
+  //mapRules.put('F', "F[-F]F[+F]F");
+  //theta = radians(25);
+  
+  //mapRules.put('F', "FF+[+F-F-F]-[-F+F+F]");
+  //theta = radians(25);
+  
+  mapRules.put('F', "F[F]-F+F[--F]+F-F");
+  listPreviousChar.add('-');
+  listPreviousChar.add('F');
+  listPreviousChar.add('-');
+  listPreviousChar.add('F');
+  theta = radians(90);
+  
+  
+  //mapRules.put('F', "[+F][-F]");
+  //theta = radians(45);
   //Print first State
   println(listPreviousChar.get(0));
 }
@@ -75,5 +91,5 @@ void mousePressed() {
   translate(width/2, height);
   rotate(-PI/2);
   lineLength *=0.6;
-  lSystem(true);
+  lSystem(false);
 }
