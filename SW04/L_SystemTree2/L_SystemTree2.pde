@@ -14,21 +14,55 @@ void setup() {
   listPreviousChar.add('F');
   //Define HashMap + angle
   //mapRules.put('F', "FF+[+F-F-F]-[-F+F+F]");
-  
+
   //mapRules.put('F', "F[-F]F[+F]F");
   //theta = radians(25);
-  
+
   //mapRules.put('F', "FF+[+F-F-F]-[-F+F+F]");
   //theta = radians(25);
-  
+
+
+  /*
   mapRules.put('F', "F[F]-F+F[--F]+F-F");
+   listPreviousChar.add('-');
+   listPreviousChar.add('F');
+   listPreviousChar.add('-');
+   listPreviousChar.add('F');
+   theta = radians(90);
+   */
+
+  /*
+  mapRules.put('F', "F-F++F-F");
+  listPreviousChar.add('+');
+  listPreviousChar.add('+');
+  listPreviousChar.add('F');
+  listPreviousChar.add('+');
+  listPreviousChar.add('+');
+  listPreviousChar.add('F');
+  theta = radians(60);
+  */
+  
+  /*
+  mapRules.put('F', "F--F--F--GG");
+  mapRules.put('G', "GG");
+  listPreviousChar.add('-');
   listPreviousChar.add('-');
   listPreviousChar.add('F');
   listPreviousChar.add('-');
+  listPreviousChar.add('-');
   listPreviousChar.add('F');
-  theta = radians(90);
+  theta = radians(60);
+  */
   
   
+  /*
+  mapRules.put('F', "[-G+++F][-G+F][GG--F]");
+  mapRules.put('G', "GG");
+  theta = radians(60);
+  */
+
+
+
   //mapRules.put('F', "[+F][-F]");
   //theta = radians(45);
   //Print first State
@@ -67,6 +101,8 @@ void lSystem(boolean printChars) {
       pushMatrix();
     } else if (listNextChar.get(i).equals(']')) {
       popMatrix();
+    } else if (listNextChar.get(i).equals('G')) {
+       translate(lineLength, 0); 
     }
   }
 
