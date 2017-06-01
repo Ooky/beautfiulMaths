@@ -1,0 +1,29 @@
+int squareSize = 2;
+int[] arrActualState;
+int gridPosition =0;
+
+
+
+void setup() {
+  size(600, 600);
+  background(0);
+  fill(255);
+  arrActualState = new int[width/squareSize];
+}
+
+
+
+
+void draw() {
+  rect(30, 20, squareSize, squareSize);
+}
+
+
+void setupFirstArray() {
+  //init everything with zeros
+  for(int i  =0; i <arrActualState.length; i++) {
+    arrActualState[i] = 0;
+  }
+  //init the middle cell with a 1.
+  arrActualState[arrActualState.length/2] =1;
+}

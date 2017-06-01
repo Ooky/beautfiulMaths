@@ -1,0 +1,56 @@
+int squareSize = 4;
+int[] arrActualState;
+int[] arrOldUnchangedArray;
+int gridPosition =0;
+
+int[] arrRuleset={0, 0, 1, 1, 0, 1, 1, 0}; //Rule 54
+int counter=0;
+
+void setup() {
+  size(600, 600);
+  background(255);
+  arrActualState = new int[width/squareSize];
+  setupFirstArray();
+  arrayCopy(arrActualState, arrOldUnchangedArray);
+}
+
+
+
+
+void draw() {
+  drawRectangle();
+}
+
+
+void drawRectangle() {
+  if (counter <= height) {
+    drawSquares();
+    arrayCopy(arrActualState, arrOldUnchangedArray);
+  }
+}
+
+void defineNextGeneration() {
+  
+}
+
+
+void drawSquares() {
+  for (int i = 0; i < arrActualState.length; i++) {
+    if (arrActualState[i] == 1) {
+      fill(255);
+    } else {
+      fill(0);
+    }
+    rect(i*squareSize, 0, squareSize, squareSize);
+  }
+}
+
+
+void setupFirstArray() {
+  //init everything with zeros
+  for (int i  =0; i <arrActualState.length; i++) {
+    arrActualState[i] = 0;
+  }
+  //init the middle cell with a 1.
+  arrActualState[arrActualState.length/2] =1;
+}
