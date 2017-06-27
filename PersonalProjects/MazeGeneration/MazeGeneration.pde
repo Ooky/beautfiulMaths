@@ -8,20 +8,29 @@
 
 //Variables
 private final static int SQUARE_SIZE = 40;
-private int columns; 
-private int rows;
-private Cell[] arrCells;
+public int columns; 
+public int rows;
+public Cell[] arrCells;
+private Cell current;
+private final int startingCell = 0;
 
 void setup() {
   size(800, 800); 
-  background(0);
   initGrid();
   initCells();
-  drawGrid();
+  frameRate(5);
 }
 
 
 void draw() {
+  background(0);
+  drawGrid();
+  current.setVisited(true);
+  Cell nextCell = current.checkNeighbours();
+  if(nextCell != null) {
+    nextCell.alreadyVisited = true;
+    current = nextCell;
+  }
 }
 
 
@@ -40,6 +49,7 @@ private void initCells() {
       arrCells[y+x*columns] = cell; //every index
     }
   }
+  current = arrCells[startingCell];
 }
 
 private void drawGrid() {

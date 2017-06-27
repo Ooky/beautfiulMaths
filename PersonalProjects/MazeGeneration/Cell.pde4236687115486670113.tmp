@@ -48,63 +48,34 @@ class Cell {
     }
   }
 
-  public Cell checkNeighbours() {
-    Cell[] neighbourCells = new Cell[4];
-    int index = 0;
+  public void checkNeighbours() {
+    Stack neighbourCells = new Stack();
     //--------------------------------------------------------------
     //TOP    : (x  , y-1) 
     //RIGHT  : (x+1, y  )
     //BOTTOM : (x  , y+1)
     //LEFT   : (x-1, y  )
     //--------------------------------------------------------------
-    Cell cellTop, cellRight, cellBottom, cellLeft;
-    cellTop = cellRight = cellBottom = cellLeft = null;
-    //check if neighbour Cell is in grid(index >= 0)
-    if (calcAndReturnIndex(x, y-1) > -1) {
-      cellTop     = arrCells[calcAndReturnIndex(x, y-1)];
-    }
-    if (calcAndReturnIndex(x+1, y  ) > -1) {
-      cellRight   = arrCells[calcAndReturnIndex(x+1, y  )];
-    }
-    if (calcAndReturnIndex(x, y+1) > -1) {
-      cellBottom  = arrCells[calcAndReturnIndex(x, y+1)];
-    }
-    if (calcAndReturnIndex(x-1, y  ) > -1) {
-      cellLeft    = arrCells[calcAndReturnIndex(x-1, y  )];
-    }
+    Cell cellTop     = arrCells[getIndex(x, y-1)];
+    Cell cellRight   = arrCells[getIndex(x+1, y  )];
+    Cell cellBottom  = arrCells[getIndex(x, y+1)];
+    Cell cellLeft    = arrCells[getIndex(x-1, y  )];
 
-    //Important Order! Check FIRST !=null, otherwise nullpointerException!
-    if (cellTop != null && !cellTop.alreadyVisited) {
-      neighbourCells[index] = cellTop;
-      index++;
+    if (!cellTop.alreadyVisited) {
+      neighbourCells.push(cellTop);
     }
-    if (cellRight != null && !cellRight.alreadyVisited) {
-      neighbourCells[index] = cellRight;
-      index++;
+    if (!cellRight.alreadyVisited) {
+      neighbourCells.push(cellRight);
     }
-    if (cellBottom != null && !cellBottom.alreadyVisited) {
-      neighbourCells[index] = cellBottom;
-      index++;
+    if (!cellBottom.alreadyVisited) {
+      neighbourCells.push(cellBottom);
     }
-    if (cellLeft != null && !cellLeft.alreadyVisited) {
-      neighbourCells[index] = cellLeft;
-      index++;
-    }
-
-    if (neighbourCells.length > 0) {
-      int randomNumber = floor(random(0, neighbourCells.length));
-      return neighbourCells[randomNumber];
-    } else {
-      //this should never happen
-      return null; 
+    if (!cellLeft.alreadyVisited) {
+      neighbourCells.push(cellLeft);
     }
   }
 
-  public int calcAndReturnIndex(int x, int y) {
-    //EdgeCases: TOP, RIGHT, BOTTOM, LEFT
-    if ( y <0 || x > (columns-1) || y >(rows -1)|| x < 0  ) {
-      return -1;
-    }
+  public int getIndex(int x, int y) {
     return (y+x*columns);
   }
   public boolean getVisited() {
