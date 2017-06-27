@@ -4,7 +4,7 @@ class Cell {
   private final int x;
   private final int y;
   private HashMap<String, Boolean> arrWalls = new HashMap<String, Boolean>();
-  private boolean alreadyVisited = false;
+  private boolean alreadyVisited;
 
   Cell(final int x, final int y) {
     this.x = x; 
@@ -13,6 +13,7 @@ class Cell {
     arrWalls.put("RIGHT", true);
     arrWalls.put("BOTTOM", true);
     arrWalls.put("LEFT", true);
+    alreadyVisited = false;
   }
 
   private void drawGrid() {
@@ -43,6 +44,7 @@ class Cell {
     }
 
     if (this.alreadyVisited) {
+      noStroke();
       fill(0, 255, 0, 100); 
       rect(positionX, positionY, SQUARE_SIZE, SQUARE_SIZE);
     }
@@ -96,7 +98,7 @@ class Cell {
       return neighbourCells[randomNumber];
     } else {
       //this should never happen
-      return null; 
+      return null;
     }
   }
 
