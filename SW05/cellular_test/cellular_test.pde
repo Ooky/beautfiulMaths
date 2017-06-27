@@ -15,16 +15,18 @@ void setup() {
   arrayCopy(arrActualState, arrOld);
 }
 
-
-
 void draw() {
-  rect(20, 20, 20,20);
   drawRectangle();
 }
 
 
+void complete2DArray() {
+  
+  
+}
+
 void drawRectangle() {
-  if (counter <= height) {
+  if (counter <= height) { //<>//
     counter++;
     drawSquares(counter);
     arrayCopy(arrActualState, arrOld);
@@ -103,6 +105,7 @@ void drawSquares(int counter) {
     defineNextGeneration();
   }
 }
+
 
 
 void setupFirstArray() {
