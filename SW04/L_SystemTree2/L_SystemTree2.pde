@@ -42,7 +42,7 @@ void setup() {
   theta = radians(60);
   */
   
-  /*
+  
   mapRules.put('F', "F--F--F--GG");
   mapRules.put('G', "GG");
   listPreviousChar.add('-');
@@ -52,7 +52,7 @@ void setup() {
   listPreviousChar.add('-');
   listPreviousChar.add('F');
   theta = radians(60);
-  */
+  
   
   
   /*
