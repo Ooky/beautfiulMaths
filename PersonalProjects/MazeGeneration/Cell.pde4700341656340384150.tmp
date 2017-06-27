@@ -5,6 +5,12 @@ class Cell {
   private final int y;
   private HashMap<String, Boolean> arrWalls = new HashMap<String, Boolean>();
   private boolean alreadyVisited = false;
+  //Coloring
+  private final int minAlphaRange = 50;
+  private final int maxAlphaRange = 200;
+  private final int alphaRange = (maxAlphaRange-minAlphaRange);
+  private final int cellCount = columns*rows;
+  private int alpha=minAlphaRange;
 
   Cell(final int x, final int y) {
     this.x = x; 
@@ -43,7 +49,8 @@ class Cell {
     }
 
     if (this.alreadyVisited) {
-      fill(0, 255, 0, 100); 
+      int test = alphaRange/cellCount;
+      fill(0, 255, 0, minAlphaRange+test); 
       rect(positionX, positionY, SQUARE_SIZE, SQUARE_SIZE);
     }
   }

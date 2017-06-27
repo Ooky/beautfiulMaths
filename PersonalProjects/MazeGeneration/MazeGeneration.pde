@@ -1,24 +1,24 @@
 //last step, finalize everything
 //comment other things
 //private and shit
-//in cell:
-//  instead of an booleanArray with top-right-bottom-left, use a map with <String, boolean>
-//  better to read!
+
 
 
 //Variables
-private final static int SQUARE_SIZE = 40;
+private final int SQUARE_SIZE = 40;
 public int columns; 
 public int rows;
 public Cell[] arrCells;
 private Cell current;
 private final int startingCell = 0;
 
+
+
 void setup() {
   size(800, 800); 
   initGrid();
   initCells();
-  frameRate(5);
+  frameRate(50);
 }
 
 
@@ -27,7 +27,7 @@ void draw() {
   drawGrid();
   current.setVisited(true);
   Cell nextCell = current.checkNeighbours();
-  if(nextCell != null) {
+  if (nextCell != null) {
     nextCell.alreadyVisited = true;
     current = nextCell;
   }
