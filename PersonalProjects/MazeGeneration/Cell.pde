@@ -2,11 +2,16 @@ class Cell {
   private final int x;
   private final int y;
   //TOP-RIGHT-BOTTOM-LEFT
-  private final boolean[] arrWalls = {true, true, true, true};
+  //private boolean[] arrWalls = {true, true, true, true};
+  private HashMap<String, Boolean> arrWalls = new HashMap<String, Boolean>();
 
   Cell(final int x, final int y) {
     this.x = x; 
     this.y = y;
+    arrWalls.put("TOP", true);
+    arrWalls.put("RIGHT", true);
+    arrWalls.put("BOTTOM", true);
+    arrWalls.put("LEFT", true);
   }
 
   private void drawGrid() {
@@ -28,19 +33,19 @@ class Cell {
     //BOTTOM - LEFT : (positionX            , positionY+SQUARE_SIZE)
     //--------------------------------------------------------------
     //TOP      From: TopLeft to TopRight
-    if (this.arrWalls[0]) {
+    if (this.arrWalls.get("TOP")) {
       line(positionX, positionY, positionX+ SQUARE_SIZE, positionY);
     }
     //RIGHT    From: TopRight to BottomRight
-    if (this.arrWalls[1]) {
+    if (this.arrWalls.get("RIGHT")) {
       line(positionX+SQUARE_SIZE, positionY, positionX+SQUARE_SIZE, positionY+SQUARE_SIZE);
     }
     //BOTTOM   From: BottomRight to BottomLeft
-    if (this.arrWalls[2]) {
+    if (this.arrWalls.get("LEFT")) {
       line(positionX+SQUARE_SIZE, positionY+SQUARE_SIZE, positionX, positionY+SQUARE_SIZE);
     }
     //LEFT     From: BottomLeft to TopLeft
-    if (this.arrWalls[3]) {
+    if (this.arrWalls.get("BOTTOM")) {
       line(positionX, positionY+SQUARE_SIZE, positionX, positionY);
     }
   }

@@ -6,6 +6,8 @@
 //  better to read!
 
 
+//fix: indexCounter und formula in double nested for loop
+
 //Variables
 private final static int SQUARE_SIZE = 40;
 private int columns; 
@@ -34,10 +36,16 @@ private void initGrid() {
 }
 private void initCells() {
   //Create every Cell
+  int indexCounter=0;
   for (int x = 0; x < rows; x++) {
     for (int y = 0; y < columns; y++) {
       Cell cell = new Cell(x, y);
-      arrCells[y+x*columns] = cell; //every index
+      arrCells[indexCounter] = cell;
+      if(indexCounter != (y+x*columns)) {
+      println("indexCounter:"+indexCounter);
+      println("otherFormula"+(y+x*columns));
+      }
+      indexCounter++;
     }
   }
 }
