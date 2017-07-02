@@ -10,7 +10,8 @@ void setup() {
   //drawSpiraleLogarithmic(20, 400, 400);
   //somethingSpecial(200,400,400);
   //mikeSolutionSpiralLogarithmic(20, 0.01, 200, 200);
-  goldenRatio(400, 400);
+  //goldenRatio(400, 400);
+  //frameRate(2);
 }
 
 void goldenRatio(float posX, int posY) {
@@ -117,5 +118,20 @@ void drawSpirale(float radius, int posX, int posY) {
   for (float f = 0; f<720*2; f+=0.25) {//f<360; f+=1  //f<720; f+=0.5
     point(posX+cos(f)*radius, posY+sin(f)*radius);
     radius-=0.1;
+  }
+}
+
+int f=0;
+int radius = 400;
+int posX = 400;
+int posY= 400;
+void draw() {
+  //MiddlePoint
+  point(posX, posY);
+  if (f <=720*2) {
+    //f<360; f+=1  //f<720; f+=0.5
+    point(posX+cos(g)*radius, posY+sin(g)*radius);
+    radius-=0.1;
+    f+=0.25;
   }
 }
