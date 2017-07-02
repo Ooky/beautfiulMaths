@@ -89,18 +89,18 @@ private void drawGrid() {
 private void removeWallsBetweenCells(Cell currentCell, Cell nextCell) {
   int differenceVertical = currentCell.x - nextCell.x;
   if (differenceVertical == 1) {
-    currentCell.walls[3] = false;//Left
-    nextCell.walls[1] = false;//Right
+    currentCell.wallMap.put("LEFT", false);
+    nextCell.wallMap.put("RIGHT", false);
   } else if (differenceVertical == -1) {
-    currentCell.walls[1] = false;//Right
-    nextCell.walls[3] = false;//Left
+    currentCell.wallMap.put("RIGHT", false);
+    nextCell.wallMap.put("LEFT", false);
   }
   int differenceHorizontal = currentCell.y - nextCell.y;
   if (differenceHorizontal == 1) {
-    currentCell.walls[0] = false;//Top
-    nextCell.walls[2] = false;//Bottom
+    currentCell.wallMap.put("TOP", false);
+    nextCell.wallMap.put("BOTTOM", false);
   } else if (differenceHorizontal == -1) {
-    currentCell.walls[2] = false;//Bottom
-    nextCell.walls[0] = false;//Top
+    currentCell.wallMap.put("BOTTOM", false);
+    nextCell.wallMap.put("TOP", false);
   }
 }//private void removeWallsBetweenCells(Cell currentCell, Cell nextCell) {

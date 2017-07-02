@@ -1,6 +1,7 @@
 public class Cell {
   private final int x; 
   private final int y;
+  private final boolean[] walls = new boolean[4];
   private final HashMap<String, Boolean> wallMap = new HashMap<String, Boolean>();
   private boolean visited = false;
 
@@ -8,10 +9,10 @@ public class Cell {
   public Cell(int x, int y) {
     this.x = x; 
     this.y = y;
-    wallMap.put("TOP", true);
-    wallMap.put("RIGHT", true);
-    wallMap.put("BOTTOM", true);
-    wallMap.put("LEFT", true);
+    walls[0] = true;
+    walls[1] = true; 
+    walls[2] = true;
+    walls[3] = true;
   }
   public void drawGrid() {
     stroke(colorWalls);
@@ -24,12 +25,12 @@ public class Cell {
     //BOTTOM - LEFT : ( positionX            , positionY+squareSize )
     //---------------------------------------------------------------
 
-    //From: TopLeft to TopRight
-    if (this.wallMap.get("TOP")) {
+    //TOP      From: TopLeft to TopRight
+    if (this.walls[0]) {
       line(positionX, positionY, positionX + squareSize, positionY);
     }
-    //From: TopRight to BottomRight
-    if (this.wallMap.get("RIGHT")) {
+    //RIGHT    From: TopRight to BottomRight
+    if (this.walls[1]) {
       //right wall fix
       if ((this.x+1) % (columns) != 0) {
         line(positionX + squareSize, positionY, positionX + squareSize, positionY + squareSize);
@@ -37,8 +38,8 @@ public class Cell {
         line(positionX + squareSize-1, positionY, positionX + squareSize-1, positionY + squareSize);
       }
     }
-    //From: BottomRight to BottomLeft
-    if (this.wallMap.get("BOTTOM")) {
+    //BOTTOM   From: BottomRight to BottomLeft
+    if (this.walls[2]) {
       //bottom wall fix
       if ((this.y+1) % (rows) != 0) {
         line(positionX + squareSize, positionY + squareSize, positionX, positionY + squareSize);
@@ -46,8 +47,8 @@ public class Cell {
         line(positionX + squareSize, positionY + squareSize-1, positionX, positionY + squareSize-1);
       }
     }
-    //From: BottomLeft to TopLeft
-    if (this.wallMap.get("LEFT")) {
+    //LEFT     From: BottomLeft to TopLeft
+    if (this.walls[3]) {
       line(positionX, positionY + squareSize, positionX, positionY);
     }
     if (this.visited) {
